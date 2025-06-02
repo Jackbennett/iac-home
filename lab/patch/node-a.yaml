@@ -1,0 +1,21 @@
+machine:
+  install:
+    disk: /dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV8171019K240AGN
+    image: ghcr.io/siderolabs/installer:v1.10.3
+    wipe: true
+  network:
+    interfaces:
+    - interface: eno1 # The interface name.
+      # Assigns static IP addresses to the interface.
+      addresses:
+        - 192.168.1.201/24
+      routes:
+        - network: 0.0.0.0/0 # The route's network (destination).
+          gateway: 192.168.1.5 # The route's gateway (if empty, creates link scope route).
+          metric: 1024 # The optional metric for the route.
+      mtu: 1500 # The interface's MTU.
+      vip: # Only control plane nodes
+        ip: 192.168.1.200
+
+cluster:
+  allowSchedulingOnControlPlanes: true

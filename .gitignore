@@ -1,0 +1,4 @@
+lab/secrets.yaml
+lab/controlplane.yaml
+lab/worker.yaml
+lab/talosconfig

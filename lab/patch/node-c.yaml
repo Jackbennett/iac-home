@@ -1,0 +1,20 @@
+- op: add
+  path: /machine/install
+  value:
+    disk: /dev/disk/by-id/ata-INTEL_SSDSC2BB240G7_PHDV818600BJ240AGN
+    image: ghcr.io/siderolabs/installer:v1.10.1
+    wipe: true
+
+  
+- op: add
+  path: /machine/network/interfaces
+  value:
+    - interface: eno1 # The interface name.
+      # Assigns static IP addresses to the interface.
+      addresses:
+        - 192.168.1.209/24
+      routes:
+        - network: 0.0.0.0/0 # The route's network (destination).
+          gateway: 192.168.1.5 # The route's gateway (if empty, creates link scope route).
+          metric: 1024 # The optional metric for the route.
+      mtu: 1500 # The interface's MTU.
