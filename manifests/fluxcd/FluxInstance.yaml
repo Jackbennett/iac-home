@@ -19,7 +19,7 @@ spec:
     - image-reflector-controller
     - image-automation-controller
   cluster:
-    multitenant: true
+    multitenant: false
     networkPolicy: true
   sync:
     kind: GitRepository
