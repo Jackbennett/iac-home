@@ -1,0 +1,35 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: part-db
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://part-db.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: part-db
+  namespace: default
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: part-db
+      version: "*"
+      sourceRef:
+        kind: HelmRepository
+        name: part-db
+        namespace: flux-system
+  targetNamespace: part-db
+  install:
+    createNamespace: true
+  values:
+    db:
+      type: postgresql
+      user: neondb_owner
+      password: "npg_pZbnVDHY0aJ7"
+      db: neondb
+      host: "ep-dry-resonance-abmtvmy6-pooler.eu-west-2.aws.neon.tech"
