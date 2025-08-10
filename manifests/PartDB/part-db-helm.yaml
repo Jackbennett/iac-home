@@ -23,13 +23,11 @@ spec:
         kind: HelmRepository
         name: part-db
         namespace: flux-system
+      # valuesFiles:
+      #   - values.yaml
   targetNamespace: part-db
   install:
     createNamespace: true
-  values:
-    db:
-      type: postgresql
-      user: neondb_owner
-      password: "npg_pZbnVDHY0aJ7"
-      db: neondb
-      host: "ep-dry-resonance-abmtvmy6-pooler.eu-west-2.aws.neon.tech"
+  valuesFrom:
+    - kind: Secret
+      name: db-connection

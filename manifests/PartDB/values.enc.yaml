@@ -1,0 +1,21 @@
+db:
+    type: postgresql
+    user: ENC[AES256_GCM,data:DHn9dKxAecfef8ro,iv:tcIomldzD97fPB+kS4ZjyPanVWcIOJXd+egV6s+ZZio=,tag:UQdw+CiZ/3KIRO1F3ltbLQ==,type:str]
+    password: ENC[AES256_GCM,data:UdgLuOmHAGbayltQBCKvBQ==,iv:4qJ8EvGAgIIrdK6JsGvIQqOYdX71rft0tEIfYnU72a8=,tag:z0UqjfZk5dR0OKE5fcy8Ew==,type:str]
+    db: neondb
+    host: ENC[AES256_GCM,data:aOubPVLiQ7JnCL2Joaxc0EPqwwZ8ZioyR2x6Jbfhw0kx4eEorAMJ7Tn5czOpJdI+PmK/PSOIJeo=,iv:aDChDF9BAuxcLUeZ4b0UMkoAn3ifJaIQ5V33UP7lNPA=,tag:E8Qi9PSNtUrN9AUjnVFD4g==,type:str]
+sops:
+    age:
+        - recipient: age1xelh7mcaqflyydn3nxem553pt3tlqkqhyacsmuqefl0xs6vk938sy378gm
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLRVZaNEZjUExXUkEzNFBv
+            NURjSHV4UjljTmJIUktKTVdrSW5BaXJyTGxnCnhwakZKUEIxRXFxWkJtbXJneHRR
+            Z2lkaG5IZjZYeG02K0xEdThGSUgzQWMKLS0tIHVBZkhrcThIRHZXU1FJamM4SHNQ
+            a1ZtNzVQZC9MdXlGaVNiRVRxaTk2VjQKs9JpAysmqhvS3opmXA5Tdf3coVyAXV4m
+            p7rrh1Sbdgb2+V+EecwAZva567F6EEWf9RVUHRJUOirypNrJDYpPtQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-08-10T23:02:06Z"
+    mac: ENC[AES256_GCM,data:XaFJ6J9ysVooj8SFKqOJK30me9WMc0jynDirmgaF6CtjhOeknw3LSuyKuX2mF82Mt23bMmsYZe6vPFyxEum6jBHO/14mGrvykIQN53V2zMaycFbR5yTcdGHf0D9/pvRE52bR4GA62sRToJ10P4BEGTL6bg2fkZmJ7nnp5WWV8Cc=,iv:PIVziDQ0KBCL6OM437355bUheaOBrtUWMCCFmeOJ0Kk=,tag:/RuocOC66VTkVbQYuhALbA==,type:str]
+    encrypted_regex: ^(user|password|host|)$
+    version: 3.10.2
