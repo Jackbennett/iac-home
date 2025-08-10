@@ -23,8 +23,8 @@ spec:
         kind: HelmRepository
         name: part-db
         namespace: flux-system
-      # valuesFiles:
-      #   - values.yaml
+      valuesFiles:
+        - values.yaml
   targetNamespace: part-db
   install:
     createNamespace: true
