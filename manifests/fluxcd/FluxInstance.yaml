@@ -26,3 +26,14 @@ spec:
     url: "https://github.com/Jackbennett/iac-home.git"
     ref: "refs/heads/main"
     path: "manifests"
+  kustomize:
+    patches:
+      - patch: |
+          - op: add
+            path: /spec/decryption
+            value:
+              provider: sops
+              secretRef:
+                name: sops-age
+        target:
+          kind: Kustomization
