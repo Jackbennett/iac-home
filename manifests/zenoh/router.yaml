@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zenoh-router
+  labels:
+    app: zenoh-router
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: zenoh-router
+  template:
+    metadata:
+      labels:
+        app: zenoh-router
+    spec:
+      containers:
+      - name: zenoh-router
+        image: eclipse/zenoh:1.5.0
+        args: ["--adminspace-permissions=rw"]
+        ports:
+        - containerPort: 7447 # Default zenoh port
+        - containerPort: 7446 # Default zenoh udp lisener port
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop: ["ALL"]
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
