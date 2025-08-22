@@ -5,6 +5,7 @@ metadata:
   labels:
     app: zenoh-router
 spec:
+  type: LoadBalancer
   selector:
     app: zenoh-router
   ports:
