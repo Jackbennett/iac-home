@@ -22,9 +22,9 @@ spec:
           - name: PUBLIC_URL
             value: https://cms.jackben.net
           - name: TELEMETRY
-            value: false
+            value: "false"
           - name: ACCEPT_TERMS
-            value: false
+            value: "false"
           - name: CONFIG_PATH
             value: /run/directus/config.yaml
         volumeMounts:
