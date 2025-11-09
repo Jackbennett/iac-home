@@ -3,23 +3,19 @@ kind: Secret
 metadata:
     name: cms-directus-config
 stringData:
-  config.yaml: |
-    TELEMETRY: false
-    ACCEPT_TERMS: false
-    DB_CLIENT: postgres
-    DB_CONNECTION_STRING: ENC[AES256_GCM,data:yCMiBYqUDSaHhlAGdIfEIovzryP4nvUOPDyD0rwaGUJHSLivU0ect+ExOaKZ8UN9K208CthTt77gWTbAiDUULvnQCvJxInBv1AuiWZH8UxOwW3v4qW7BN6CYMdvmXuYLPIv9hCgqmnSXnBBx6vDzBwSFJROcsMVzsD079fIE6QAQnlLAPFx8NDiP6BIhaHs9LA==,iv:3lPyhq40OtlIv4UH9++oCnSvnL4k2vgA3k547mBtxTE=,tag:zsPoE4AfYITLROWnq8qSyw==,type:str]
+    config.yaml: ENC[AES256_GCM,data:aHG3zMj3S8omCWxkShY5yRsVHvoBvozuzwl7hhdN5YBFQTuritq52MdDsUMFYNTk5IvfRJAFOOwIJIdrpFbxMaTG7wwRwGvptOYDsA0n7YLjZ404mHhqMl9tHyKT/VZpHRR100jTaGbMip6diH4wAoqqP6VuNKIqYZ2/Ifei96r8C7BoTeY7ddYvcSxI3yUKtaGM0YrHb4Q3kmn7V3jYEblBvFwUvs5obuMmup3W786jQVk9mU3FlxecdIw=,iv:Doc3u+2OhLIkZfUaBpgM6UpTQ4yaKtgP/vkVUno0r+g=,tag:IRV7MtZW8+9T6BZqYkwrQA==,type:str]
 sops:
     age:
         - recipient: age1xelh7mcaqflyydn3nxem553pt3tlqkqhyacsmuqefl0xs6vk938sy378gm
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoZHpSMGhwV3VkTVRpNjVt
-            QjlDMnhuQ0JocEV6UnVNMGsyRCtuMU9sc0RFClRWcmFXVXVRRjh4RmZaRVc2S3Mz
-            V3NuUS9NMG1nZFVQTmxuUVNtbFBrK0kKLS0tIGc2WXpOQWxyMFdkUTI3NmlxZG5T
-            cDRiMmZRY1k1YkZ3bkZGakNlZGJxZEUKM56rLXC+Hcf1AzWSWtSB46xNNn+pEdya
-            yZDi+FahFSXrVJidx8iTkF7wcR7bnOlhzpi5ar0XJVN7LdfUU03mfA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpR0x5cHoxTkVadEM4K2dZ
+            cXpOQS9aME8xQTJLQ3MwL1QxUE1vMmZaR0IwCm9aS3lScWk5OXNpK2g0NTBjVE5p
+            RHVWL0hSdDlTemx0dWovQ2JnTnA3Y2cKLS0tIGtlOUxVL2NBbVhNdU9ZNllrR1M1
+            Z2NZWDczMmJVQXZxR1NHQk9SYmE4T3cKaT+TvAGyvW60wnntCoGa0epRBivF7y6Z
+            sQ9UIPCy7o439nPXahcw0Y0qDuNGA/MLzFtqlaV8Ij7TI4GLv8H6SA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-11-09T19:46:17Z"
-    mac: ENC[AES256_GCM,data:Ya4mxLH/X8IA2HQEQLd3vRE0MHOFEGKxCJOAKLwNkbHWc4M4PyU3PqQmOhXXE6GXDTuJfGSH+SHChtgkRg2B4ki7muWMpur+CrbDBWd4Tat0u/lc3cnyb9NTbyPgQ8Ge0vJ7PMg1hQ52RW9uB3XihzSVjMD+7mO+2TnQrfFRKaQ=,iv:8TkcuFp+DlIX0+1fNl4RJoul1tLYSaTzlgOkGswyj/k=,tag:1qlN1NbC1mN9IwdHcp+inA==,type:str]
-    encrypted_regex: ^(DB_CONNECTION_STRING|)$
+    lastmodified: "2025-11-09T20:24:08Z"
+    mac: ENC[AES256_GCM,data:ulIPKaZXSY8hnlU8RNgeh3OMjbSbN73lyRtH8lsm1s72yExFY++6mWNzbYuLiBM+Q4f5it8EdgjkRmSlC9w5KrCimgv7wA3cAaDEaYdu98dOdso7E+FbrV7sSk6ZDWZuIgQA7Dtsvs7Vy4nIuX8/ZAwNGQeSuWGXsGy1W0jCRgg=,iv:BdgIOQaE3pxHoEYWPQWH842X1wEhmDi1DbCmHk1n+wU=,tag:A1K6XEN49w+ZRurtHNGWgA==,type:str]
+    encrypted_regex: ^(config.yaml|)$
     version: 3.10.2
