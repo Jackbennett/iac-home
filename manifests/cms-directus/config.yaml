@@ -3,19 +3,19 @@ kind: Secret
 metadata:
     name: cms-directus-config
 stringData:
-    config.yaml: ENC[AES256_GCM,data:aHG3zMj3S8omCWxkShY5yRsVHvoBvozuzwl7hhdN5YBFQTuritq52MdDsUMFYNTk5IvfRJAFOOwIJIdrpFbxMaTG7wwRwGvptOYDsA0n7YLjZ404mHhqMl9tHyKT/VZpHRR100jTaGbMip6diH4wAoqqP6VuNKIqYZ2/Ifei96r8C7BoTeY7ddYvcSxI3yUKtaGM0YrHb4Q3kmn7V3jYEblBvFwUvs5obuMmup3W786jQVk9mU3FlxecdIw=,iv:Doc3u+2OhLIkZfUaBpgM6UpTQ4yaKtgP/vkVUno0r+g=,tag:IRV7MtZW8+9T6BZqYkwrQA==,type:str]
+    config.yaml: ENC[AES256_GCM,data:B1qJztDtfLq3CZ2/g3lJvEAesrEo+R342D/AQpWahn9mrRpoOl+S3Mg3t/QsWaAE7m4c08x1q/GuZvb+aMNQV1CR/HcyMD6BM2kaiev6Wv5VRNr8CGHjTylP1nu0CMKmbHHXRHP/9b1Mq1GrkqTUeYjnPR9f1CxS0Epav8o+HnryS6rl9v/81TdViIDq4DXCXWToldUdcMpEZXrS/tus3E00bPPjI4bLhFsNKNGzlDhH3ynMK58=,iv:7FU7S65JSo/vrLaYsneChQCKZ91OmJrBvxtOgsfEKTY=,tag:32t/CUpa2EQPKV7a5Nb28Q==,type:str]
 sops:
     age:
         - recipient: age1xelh7mcaqflyydn3nxem553pt3tlqkqhyacsmuqefl0xs6vk938sy378gm
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpR0x5cHoxTkVadEM4K2dZ
-            cXpOQS9aME8xQTJLQ3MwL1QxUE1vMmZaR0IwCm9aS3lScWk5OXNpK2g0NTBjVE5p
-            RHVWL0hSdDlTemx0dWovQ2JnTnA3Y2cKLS0tIGtlOUxVL2NBbVhNdU9ZNllrR1M1
-            Z2NZWDczMmJVQXZxR1NHQk9SYmE4T3cKaT+TvAGyvW60wnntCoGa0epRBivF7y6Z
-            sQ9UIPCy7o439nPXahcw0Y0qDuNGA/MLzFtqlaV8Ij7TI4GLv8H6SA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBhQmpYNlQ4VmVrWlJWL1Vt
+            SkNLYkU2Ry9IeG5ZWUJyNTZLVHlzL1gzWUhrCjF5TGdOQUEyTGI3Qytuc2duZkty
+            VmpqaEt6RSszNW1KSFFxRHVobmZXbHcKLS0tIHFxSFJtbDJCY3VzMjA0emhPb3VV
+            RXpacXB2OGZSM2EvalhYaklOanBQdDQKXi2JPdNEBu8Hm759epQck5jvlUXyyclM
+            Xw+BCJ4ba82UwakGWq+PbQKGXdFBNzkatzaHYvlJG9YGU8skTomucg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-11-09T20:24:08Z"
-    mac: ENC[AES256_GCM,data:ulIPKaZXSY8hnlU8RNgeh3OMjbSbN73lyRtH8lsm1s72yExFY++6mWNzbYuLiBM+Q4f5it8EdgjkRmSlC9w5KrCimgv7wA3cAaDEaYdu98dOdso7E+FbrV7sSk6ZDWZuIgQA7Dtsvs7Vy4nIuX8/ZAwNGQeSuWGXsGy1W0jCRgg=,iv:BdgIOQaE3pxHoEYWPQWH842X1wEhmDi1DbCmHk1n+wU=,tag:A1K6XEN49w+ZRurtHNGWgA==,type:str]
+    lastmodified: "2025-11-09T20:37:30Z"
+    mac: ENC[AES256_GCM,data:vZz2fR0AmsbmuHRhYOy7bKmWDpW0xUrm1dAYRqE58sYlXYtC3BxKJRdeKgGrfv461IgCqnvaIj0ifkgzViWs2PTlGc+btA/OQjTgcF47z1fP5h+oC0BGEEAf0p3AigV5vFDbcdocgjPB26IOn5+UkjVEcEjU5wNEgARhcsWXkTQ=,iv:BViWxRLG9OYx8ukir7sv5vOcCwHcxUkCaVZj0y6hb64=,tag:beyo82ZC2xda8uHiI0SvBw==,type:str]
     encrypted_regex: ^(config.yaml|)$
     version: 3.10.2
