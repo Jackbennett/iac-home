@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cms-directus-config
+data:
+  config.yaml: |
+    TELEMETRY: false
+    ACCEPT_TERMS: false
+    DB_CLIENT: postgres
+    DB_CONNECTION_STRING: ENC[AES256_GCM,data:yCMiBYqUDSaHhlAGdIfEIovzryP4nvUOPDyD0rwaGUJHSLivU0ect+ExOaKZ8UN9K208CthTt77gWTbAiDUULvnQCvJxInBv1AuiWZH8UxOwW3v4qW7BN6CYMdvmXuYLPIv9hCgqmnSXnBBx6vDzBwSFJROcsMVzsD079fIE6QAQnlLAPFx8NDiP6BIhaHs9LA==,iv:3lPyhq40OtlIv4UH9++oCnSvnL4k2vgA3k547mBtxTE=,tag:zsPoE4AfYITLROWnq8qSyw==,type:str]
+sops:
+    age:
+        - recipient: age1xelh7mcaqflyydn3nxem553pt3tlqkqhyacsmuqefl0xs6vk938sy378gm
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoZHpSMGhwV3VkTVRpNjVt
+            QjlDMnhuQ0JocEV6UnVNMGsyRCtuMU9sc0RFClRWcmFXVXVRRjh4RmZaRVc2S3Mz
+            V3NuUS9NMG1nZFVQTmxuUVNtbFBrK0kKLS0tIGc2WXpOQWxyMFdkUTI3NmlxZG5T
+            cDRiMmZRY1k1YkZ3bkZGakNlZGJxZEUKM56rLXC+Hcf1AzWSWtSB46xNNn+pEdya
+            yZDi+FahFSXrVJidx8iTkF7wcR7bnOlhzpi5ar0XJVN7LdfUU03mfA==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2025-11-09T19:46:17Z"
+    mac: ENC[AES256_GCM,data:Ya4mxLH/X8IA2HQEQLd3vRE0MHOFEGKxCJOAKLwNkbHWc4M4PyU3PqQmOhXXE6GXDTuJfGSH+SHChtgkRg2B4ki7muWMpur+CrbDBWd4Tat0u/lc3cnyb9NTbyPgQ8Ge0vJ7PMg1hQ52RW9uB3XihzSVjMD+7mO+2TnQrfFRKaQ=,iv:8TkcuFp+DlIX0+1fNl4RJoul1tLYSaTzlgOkGswyj/k=,tag:1qlN1NbC1mN9IwdHcp+inA==,type:str]
+    encrypted_regex: ^(DB_CONNECTION_STRING|)$
+    version: 3.10.2

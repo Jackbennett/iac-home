@@ -1,0 +1,4 @@
+creation_rules:
+  - path_regex: .*config.yaml$
+    encrypted_regex: ^(DB_CONNECTION_STRING|)$
+    age: age1xelh7mcaqflyydn3nxem553pt3tlqkqhyacsmuqefl0xs6vk938sy378gm

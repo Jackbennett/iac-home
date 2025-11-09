@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: directus-deployment
+  labels:
+    app: directus
+spec:
+  selector:
+    matchLabels:
+      app: directus
+  template:
+    metadata:
+      labels:
+        app: directus
+    spec:
+      containers:
+      - name: directus
+        image: directus:11.13.1
+        ports:
+          - containerPort: 80
+        env:
+          - name: PUBLIC_URL
+            value: https://cms.jackben.net
+          - name: CONFIG_PATH
+            value: /etc/config.yaml
+        volumeMounts:
+          - name: tmp
+            mountPath: /tmp
+          - name: config
+            mountPath: /etc/config.yaml
+      volumes:
+        - name: tmp
+          emptyDir: {}
+        - name: config
+          secret:
+            secretName: cms-directus-config
+            items:
+              - key: config.yaml
+                path: config.yaml
