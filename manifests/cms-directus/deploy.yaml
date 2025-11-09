@@ -21,13 +21,17 @@ spec:
         env:
           - name: PUBLIC_URL
             value: https://cms.jackben.net
+          - name: TELEMETRY
+            value: false
+          - name: ACCEPT_TERMS
+            value: false
           - name: CONFIG_PATH
-            value: /etc/config.yaml
+            value: /run/directus/config.yaml
         volumeMounts:
           - name: tmp
             mountPath: /tmp
           - name: config
-            mountPath: /etc/config.yaml
+            mountPath: /run/directus
       volumes:
         - name: tmp
           emptyDir: {}
