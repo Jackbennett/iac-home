@@ -132,7 +132,6 @@
     pkgs.powertop
     pkgs.nushell
     pkgs.google-chrome
-    pkgs.LycheeSlicer
     (appimage-run.override {
       extraPkgs = pkgs: [ pkgs.xorg.libxshmfence ];
     })
