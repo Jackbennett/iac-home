@@ -12,6 +12,5 @@ spec:
     protocol: TCP
     targetPort: 8055
   selector:
-    labels:
-      app: directus
+    app: directus
   type: ClusterIP
