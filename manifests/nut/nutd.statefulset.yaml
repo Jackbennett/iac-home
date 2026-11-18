@@ -1,0 +1,158 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nut-viewpower
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nutd
+  namespace: nut-viewpower
+  labels:
+    app: nutd
+spec:
+  clusterIP: None
+  selector:
+    app: nutd
+  ports:
+    - name: upsd
+      port: 3493
+      targetPort: 3493
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nutd-config
+  namespace: nut-viewpower
+  labels:
+    app: nutd
+data:
+  ups.conf.user: |
+    [ups]
+      driver = nutdrv_qx
+      subdriver = cypress
+      vendorid = 0665
+      productid = 5161
+      port = auto
+  upsd.conf.user: |
+    LISTEN 0.0.0.0 3493
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nutd-secrets
+  namespace: nut-viewpower
+type: Opaque
+stringData:
+  api-password: change-me-to-a-long-random-password
+  admin-password: change-me-to-another-long-random-password
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: nutd-ingress-node-cidr
+  namespace: nut-viewpower
+spec:
+  podSelector:
+    matchLabels:
+      app: nutd
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - ipBlock:
+            cidr: 192.168.1.0/24
+      ports:
+        - protocol: TCP
+          port: 3493
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: nutd
+  namespace: nut-viewpower
+  labels:
+    app: nutd
+spec:
+  serviceName: nutd
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nutd
+
+  template:
+    metadata:
+      labels:
+        app: nutd
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+      nodeSelector:
+        usb-salicru: sps-one-a-1100va
+      containers:
+        - name: nutd
+          image: cplieger/docker-nut-upsd:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: UPS_NAME
+              value: "ups"
+            - name: UPS_DRIVER
+              value: "nutdrv_qx"
+            - name: UPS_PORT
+              value: "auto"
+            - name: API_USER
+              value: "monuser"
+            - name: API_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nutd-secrets
+                  key: api-password
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nutd-secrets
+                  key: admin-password
+          ports:
+            - containerPort: 3493
+              name: upsd
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+              devic.es/salicru-ups: "1"
+            limits:
+              cpu: 500m
+              memory: 512Mi
+              devic.es/salicru-ups: "1"
+          readinessProbe:
+            tcpSocket:
+              port: upsd
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 6
+          livenessProbe:
+            tcpSocket:
+              port: upsd
+            initialDelaySeconds: 30
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          securityContext:
+            privileged: false
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: nutd-config
+              mountPath: /etc/nut/ups.conf.user
+              subPath: ups.conf.user
+              readOnly: true
+            - name: nutd-config
+              mountPath: /etc/nut/upsd.conf.user
+              subPath: upsd.conf.user
+              readOnly: true
+      volumes:
+        - name: nutd-config
+          configMap:
+            name: nutd-config

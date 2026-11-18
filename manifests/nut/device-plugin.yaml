@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: usb-device-plugin
+  namespace: kube-system
+  labels:
+    app.kubernetes.io/name: usb-device-plugin
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: usb-device-plugin
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: usb-device-plugin
+    spec:
+      automountServiceAccountToken: false
+      priorityClassName: system-node-critical
+      nodeSelector:
+        usb-salicru: sps-one-a-1100va
+      tolerations:
+        - operator: Exists
+          effect: NoExecute
+        - operator: Exists
+          effect: NoSchedule
+      containers:
+        - name: generic-device-plugin
+          image: squat/generic-device-plugin:latest
+          args:
+            - --device
+            - |
+              name: salicru-ups
+              groups:
+                - usb:
+                    - vendor: "0665"
+                      product: "5161"
+          resources:
+            requests:
+              cpu: 25m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          volumeMounts:
+            - name: device-plugin
+              mountPath: /var/lib/kubelet/device-plugins
+            - name: dev
+              mountPath: /dev
+      volumes:
+        - name: device-plugin
+          hostPath:
+            path: /var/lib/kubelet/device-plugins
+        - name: dev
+          hostPath:
+            path: /dev
+  updateStrategy:
+    type: RollingUpdate
