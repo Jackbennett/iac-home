@@ -28,12 +28,12 @@ spec:
     path: "manifests/fluxcd"
   kustomize:
     patches:
-      - patch: |
+      - target:
+          kind: Kustomization
+        patch: |
           - op: add
             path: /spec/decryption
             value:
               provider: sops
               secretRef:
                 name: sops-age
-        target:
-          kind: Kustomization
