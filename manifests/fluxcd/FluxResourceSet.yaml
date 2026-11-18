@@ -5,16 +5,18 @@ metadata:
   namespace: flux-system
 spec:
   inputs:
-    - version: "*"
+    - name: flux-operator
+      namespace: flux-system
+      version: "*"
       interval: 12h
   resources:
    - apiVersion: source.toolkit.fluxcd.io/v1
      kind: OCIRepository
      metadata:
-      name: << inputs.provider.name >>
-      namespace: << inputs.provider.namespace >>
+      name: << inputs.name >>
+      namespace: << inputs.namespace >>
      spec:
-      interval: << inputs.provider.interval >>
+      interval: << inputs.interval >>
       url: oci://ghcr.io/controlplaneio-fluxcd/charts/flux-operator
       layerSelector:
         mediaType: "application/vnd.cncf.helm.chart.content.v1.tar+gzip"
@@ -24,15 +26,15 @@ spec:
    - apiVersion: helm.toolkit.fluxcd.io/v2
      kind: HelmRelease
      metadata:
-        name: << inputs.provider.name >>
-        namespace: << inputs.provider.namespace >>
+        name: << inputs.name >>
+        namespace: << inputs.namespace >>
      spec:
       interval: 1h
-      releaseName: << inputs.provider.name >>
-      serviceAccountName: << inputs.provider.name >>
+      releaseName: << inputs.name >>
+      serviceAccountName: << inputs.name >>
       upgrade:
         strategy:
           name: RetryOnFailure
       chartRef:
         kind: OCIRepository
-        name: << inputs.provider.name >>
+        name: << inputs.name >>
