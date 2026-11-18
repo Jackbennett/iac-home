@@ -1,0 +1,15 @@
+# creation rules are evaluated sequentially, the first match wins
+creation_rules:
+    # lab hardware config
+    # public key:
+    - path_regex: lab/.*\.secrets\.yaml$
+      unencrypted_regex: ^(id|crt)$
+      age: >-
+        ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK239zSMC/g9R2j7Kga/TMTAa34XK2JkWtxAhsGYLw0T code@jackben.net
+    # lab cluster age-key created: 2025-08-10T23:46:24+01:00
+    # public key:
+    - path_regex: manifests/.*\.secret\.yaml$
+      encrypted_regex: ^(data|stringData)$
+      age:
+        - age1xelh7mcaqflyydn3nxem553pt3tlqkqhyacsmuqefl0xs6vk938sy378gm
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK239zSMC/g9R2j7Kga/TMTAa34XK2JkWtxAhsGYLw0T code@jackben.net
