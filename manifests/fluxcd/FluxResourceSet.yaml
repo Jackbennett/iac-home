@@ -32,9 +32,6 @@ spec:
       interval: 1h
       releaseName: << inputs.name >>
       serviceAccountName: << inputs.name >>
-      upgrade:
-        strategy:
-          name: RetryOnFailure
       chartRef:
         kind: OCIRepository
         name: << inputs.name >>
