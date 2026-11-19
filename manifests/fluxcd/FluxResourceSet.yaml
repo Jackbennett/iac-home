@@ -32,6 +32,8 @@ spec:
       interval: 1h
       releaseName: << inputs.name >>
       serviceAccountName: << inputs.name >>
+      driftDetection:
+        mode: enabled
       chartRef:
         kind: OCIRepository
         name: << inputs.name >>
