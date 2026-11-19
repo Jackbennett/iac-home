@@ -30,3 +30,27 @@ See version release notes & https://www.talos.dev/v1.10/talos-guides/upgrading-t
 answer `talosctl -n <cp node> upgrade --image factory.talos.dev/metal-installer/a3ea39fe448d8d4f3bdfbfc4e662b30fa37e91e609b160bd103377e8f11bbd5c:v1.14.6`.
 
 Do the controllers then the workers.
+controlplane hash 2d61dd07b20062062ea671b4d01873506103b67c0f7a4c3fb6cf4ee85585dcb8 is worker hash (a3ea39fe448d8d4f3bdfbfc4e662b30fa37e91e609b160bd103377e8f11bbd5c) without `extensions.nut-client` so it doesn't turn itself off.
+
+
+# Network UPS Client/server
+
+* https://github.com/cplieger/docker-nut-upsd
+* https://networkupstools.org/docs/man/upsd.users.html
+* https://github.com/siderolabs/extensions/tree/main/power/nut-client
+
+nutd [server runs as a pod on the controlplane](../manifests/nut/nutd.statefulset.yaml). (pinned to the USB resource physically attached to the UPS & node.)
+
+Nut client configs talk to said controlplane pod. Worker nodes listen to the UPS & poweroff on command.
+`sops -d lab/nut/client.yaml | talosctl -n 192.168.1.210 patch mc -p -`
+```
+# client.yaml rendered SOPS
+apiVersion: v1alpha1
+kind: ExtensionServiceConfig
+name: nut-client
+configFiles:
+  - content: |-
+        MONITOR ${upsmonHost} 1 ${upsmonUser} ${upsmonPass} secondary
+        SHUTDOWNCMD "/sbin/poweroff"
+    mountPath: /usr/local/etc/nut/upsmon.conf
+```

@@ -1,0 +1,22 @@
+apiVersion: v1alpha1
+kind: ExtensionServiceConfig
+name: nut-client
+configFiles:
+    - content: ENC[AES256_GCM,data:z/ETAYi/PlGwv19C02anOLDJgUSZpZ4/pOdnoH0UDoN+sg0T70hgCoRZ4uL6J4Gk1qd4NEZH6v3tNox6qLwx7yzEv0HrfPRIJeN2bQeYO4/q+/JU2VWWWojH88y8xok/WUZPo95Eb50P5YbTIO015D/adzBfdvRGK0CC9mnK7+NOErmqnjE=,iv:4RSI45gibrs0w14IhimRV9Ck0GD/E7War8LiCASnosk=,tag:k2QKgByVqimcitL09qCjNg==,type:str]
+      mountPath: /usr/local/etc/nut/upsmon.conf
+sops:
+    age:
+        - enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IHNzaC1lZDI1NTE5IHR4TkxQdyBFVkto
+            S3NjNTU1SHE4ZjNhRmN2eDZsc0hsMkJlQ1VaUGNEdlRPK280ZFUwCjdCZzRoMWF0
+            YkwrbDdYUzZJYTkvYzN5UTZKQ0tYdHhDUWZnVUhpZ3JQL3MKLS0tIDBFdy8rRUg0
+            dFIzS1ZoZFNNcy8vTzdia3lyYThhWlFsbUZPWjFZOHRiWFkKluaPUmR9+0rRrIDx
+            0Lj41+w0umPkwOrh2CDI6tztIZ0JJaO20eJcjLli7aGMEKBbOObNpQvPG351faG0
+            sMhBzQ==
+            -----END AGE ENCRYPTED FILE-----
+          recipient: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK239zSMC/g9R2j7Kga/TMTAa34XK2JkWtxAhsGYLw0T code@jackben.net
+    encrypted_regex: ^content$
+    lastmodified: "2026-11-19T23:07:30Z"
+    mac: ENC[AES256_GCM,data:f+HBOozanysOAi5Wb+ugYSz7D/4yPi05UaJvaGJI34mPfPaqEr1C7/c7t1dwlWLkUJHcNrGyt4mpA2lQawk3E9AB/w+eH+yaxQXw/J+kCMikQo43RBKCx3+lnuXQyhaCf/nI9347e02ldPbVV2n7E/GpFq7nsT8ptwYBSg9kOQc=,iv:an6yhPbtPi799TXMB3stEAN+QZ0tbK/0Em+3+oJrND0=,tag:itUagZ6TJvl6/9AfAjg+2w==,type:str]
+    version: 3.13.3
